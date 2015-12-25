@@ -94,7 +94,7 @@ public class AirDialView extends View {
         mPaint.setAntiAlias(true);
         mPaint.setStyle(Paint.Style.STROKE);
         mWhiteColor = resources.getColor(R.color.colorWhite);
-        mAccentColor = resources.getColor(R.color.colorBlack);
+        mAccentColor = resources.getColor(R.color.colorRed);
         mFill.setStyle(Paint.Style.FILL);
         mFill.setAntiAlias(true);
         mFill.setColor(mAccentColor);
