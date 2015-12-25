@@ -6,6 +6,8 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.util.AttributeSet;
+import android.view.Surface;
+import android.view.SurfaceView;
 import android.view.View;
 
 import com.thoughtworks.airdector.AppRuntime;
@@ -30,11 +32,10 @@ public class AirDialView extends View {
     private final RectF mArcRect = new RectF();
 
     private float mRadiusOffset;
-    private float mScreenDensity;
 
     private int mDialVal;
 
-    private static int DIAL_MAX = 500;
+    private static int DIAL_MAX = 800;
 
     @SuppressWarnings("unused")
     public AirDialView(Context context) {
@@ -48,12 +49,12 @@ public class AirDialView extends View {
 
     @Override
     protected void onDraw(Canvas canvas) {
-
         drawDial(canvas);
-
     }
 
-    private void drawDial(Canvas canvas) {
+    public void drawDial(Canvas canvas) {
+        readFromSharedPrefs();
+
         int xCenter = getWidth() / 2;
         int yCenter = getHeight() / 2;
 
@@ -94,13 +95,10 @@ public class AirDialView extends View {
         mPaint.setStyle(Paint.Style.STROKE);
         mWhiteColor = resources.getColor(R.color.colorWhite);
         mAccentColor = resources.getColor(R.color.colorBlack);
-        mScreenDensity = resources.getDisplayMetrics().density;
         mFill.setStyle(Paint.Style.FILL);
         mFill.setAntiAlias(true);
         mFill.setColor(mAccentColor);
         mDotRadius = dotDiameter / 2f;
-
-        readFromSharedPrefs();
     }
 
     protected void drawDot(

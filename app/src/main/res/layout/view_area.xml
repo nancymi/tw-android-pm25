@@ -22,7 +22,6 @@
                 android:id="@+id/area_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="西安"
                 android:textColor="#ffffff"
                 android:textSize="@dimen/area_text_size"
                 android:layout_gravity="center" />
@@ -54,8 +53,7 @@
                 android:layout_height="25dp"
                 android:textColor="#ffffff"
                 android:textAlignment="center"
-                android:textSize="@dimen/area_text_size"
-                android:text="朱辛庄" />
+                android:textSize="@dimen/area_text_size" />
 
             <ImageButton
                 android:id="@+id/next_position_button"

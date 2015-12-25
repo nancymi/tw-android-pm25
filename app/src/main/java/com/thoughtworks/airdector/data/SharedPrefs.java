@@ -3,7 +3,10 @@ package com.thoughtworks.airdector.data;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.util.Log;
 
+import com.thoughtworks.airdector.AirdectorActivity;
+import com.thoughtworks.airdector.AppRuntime;
 import com.thoughtworks.airdector.model.Air;
 import com.thoughtworks.airdector.utils.Utils;
 
@@ -29,9 +32,28 @@ public class SharedPrefs {
     private final SharedPreferences pmDataPref;
     private final SharedPreferences.Editor editor;
 
+    private static final String TAG = "SharedPrefs";
+
+    private final SharedPreferences.OnSharedPreferenceChangeListener onSharedPreferenceChangeListener =
+            new SharedPreferences.OnSharedPreferenceChangeListener() {
+
+                @Override
+                public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String s) {
+                    Log.d(TAG, "onSharedPreferenceChanged");
+                    switch (s) {
+                        case SharedPrefs.PREF_AIR: AirdectorActivity.updateView(); break;
+                        case SharedPrefs.PREF_BG_COLOR: AirdectorActivity.updateBackground(); break;
+                        case SharedPrefs.PREF_DIAL: AirdectorActivity.updateDial(); break;
+                        default: break;
+                    }
+                }
+            };
+
     public SharedPrefs(Context context) {
         pmDataPref = context.getSharedPreferences(PM_PREF_NAME, Context.MODE_PRIVATE);
         editor = pmDataPref.edit();
+        pmDataPref.registerOnSharedPreferenceChangeListener(onSharedPreferenceChangeListener);
+        editor.apply();
         mContext = context;
     }
 

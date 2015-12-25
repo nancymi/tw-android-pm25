@@ -9,7 +9,6 @@
         android:layout_height="50dp"
         android:textSize="@dimen/area_text_size"
         android:textColor="#ffffff"
-        android:text="重度污染"
         android:gravity="center" />
 
 </RelativeLayout>

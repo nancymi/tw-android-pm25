@@ -1,5 +1,6 @@
 package com.thoughtworks.airdector.utils;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
@@ -25,12 +26,12 @@ import java.io.StreamCorruptedException;
 public class Utils {
 
     private static final int[] BACKGROUND_SPECTRUM = {
-            0x81D4FA,
-            0x03A9F4,
-            0x0288D1,
-            0x90A4AE,
-            0x607D8B,
-            0x546E7A
+            0xFF81D4FA,
+            0xFF03A9F4,
+            0xFF0288D1,
+            0xFF90A4AE,
+            0xFF607D8B,
+            0xFF546E7A
     };
 
     private static int getBgColorByPM(long pm_25) {
@@ -42,7 +43,7 @@ public class Utils {
             case 3: bgColor = BACKGROUND_SPECTRUM[3]; break;
             case 4: bgColor = BACKGROUND_SPECTRUM[4]; break;
             case 5: bgColor = BACKGROUND_SPECTRUM[5]; break;
-            default: bgColor = BACKGROUND_SPECTRUM[6]; break;
+            default: bgColor = BACKGROUND_SPECTRUM[5]; break;
         }
         return bgColor;
     }
