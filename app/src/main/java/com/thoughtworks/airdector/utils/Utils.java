@@ -1,8 +1,12 @@
 package com.thoughtworks.airdector.utils;
 
+import android.animation.ArgbEvaluator;
+import android.animation.ValueAnimator;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -49,13 +53,24 @@ public class Utils {
     }
 
     public static void changeBgColor(View view) {
-        FrameLayout frameLayout = (FrameLayout) view.findViewById(R.id.background);
-        Drawable drawable = frameLayout.getBackground();
-        drawable.getColorFilter();
+        final FrameLayout frameLayout = (FrameLayout) view.findViewById(R.id.background);
+        ColorDrawable colorDrawable = (ColorDrawable) frameLayout.getBackground();
+        Integer bgColorFrom = colorDrawable.getColor();
 
         Air air = AppRuntime.getSharedPrefs().getAir();
-        int bgColor = getBgColorByPM(air.getPm25());
-        frameLayout.setBackgroundColor(bgColor);
+        Integer bgColorTo = getBgColorByPM(air.getPm25());
+
+        ValueAnimator colorAnimation = ValueAnimator.ofObject(
+                new ArgbEvaluator(), bgColorFrom, bgColorTo);
+
+        colorAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animator) {
+                frameLayout.setBackgroundColor((Integer)animator.getAnimatedValue());
+            }
+        });
+        colorAnimation.setDuration(1000);
+        colorAnimation.start();
     }
 
     public static float calculateRadiusOffset(
