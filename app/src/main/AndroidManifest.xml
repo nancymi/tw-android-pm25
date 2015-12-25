@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.thoughtworks.airdector">
+
+    <application
+        android:name=".AirApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".AirdectorActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <service android:name=".AirdectorService"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="action_refresh" />
+                <action android:name="action_area_changed" />
+                <action android:name="action_last_position" />
+                <action android:name="action_next_position" />
+            </intent-filter>
+        </service>
+    </application>
+
+</manifest>

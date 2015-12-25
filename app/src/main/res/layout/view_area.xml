@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/area_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="西安"
+                android:textColor="#ffffff"
+                android:textSize="@dimen/area_text_size"
+                android:layout_gravity="center" />
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="25dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:foregroundGravity="center_horizontal"
+            android:gravity="center_horizontal">
+
+            <ImageButton
+                android:id="@+id/last_position_button"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_marginLeft="0dp"
+                android:background="#00000000"
+                android:contentDescription="@string/last_position_button"
+                android:src="@drawable/ic_keyboard_arrow_left_white_24dp"/>
+
+            <TextView
+                android:id="@+id/position_text"
+                android:layout_width="100dp"
+                android:layout_height="25dp"
+                android:textColor="#ffffff"
+                android:textAlignment="center"
+                android:textSize="@dimen/area_text_size"
+                android:text="朱辛庄" />
+
+            <ImageButton
+                android:id="@+id/next_position_button"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_marginRight="0dp"
+                android:background="#00000000"
+                android:contentDescription="@string/next_position_button"
+                android:src="@drawable/ic_keyboard_arrow_right_white_24dp"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</FrameLayout>

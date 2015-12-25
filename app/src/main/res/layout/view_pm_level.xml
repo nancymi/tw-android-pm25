@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/level_text"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:textSize="@dimen/area_text_size"
+        android:textColor="#ffffff"
+        android:text="重度污染"
+        android:gravity="center" />
+
+</RelativeLayout>
