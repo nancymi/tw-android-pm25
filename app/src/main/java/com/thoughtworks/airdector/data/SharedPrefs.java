@@ -87,4 +87,9 @@ public class SharedPrefs {
         long bgColor = pmDataPref.getLong(PREF_BG_COLOR, DEFAULT_BG_COLOR);
         return bgColor;
     }
+
+    public void clearAll() {
+        editor.clear();
+        editor.apply();
+    }
 }

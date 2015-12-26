@@ -42,9 +42,6 @@ public class AirdectorService extends Service {
     @Override
     public void onCreate() {
         loadData();
-        AirdectorActivity.updateView();
-        AirdectorActivity.updateDial();
-        AirdectorActivity.updateBackground();
     }
 
     private void loadData() {
@@ -54,8 +51,12 @@ public class AirdectorService extends Service {
             public void onCompleted(List<Air> airList) {
                 curPosition = 0;
                 airs = airList;
-                maxPosition = airs.size()-1;
+                Log.d(TAG, airs.toString());
+                maxPosition = airs.size() - 1;
                 writeToSharedPrefs();
+                AirdectorActivity.updateView();
+                AirdectorActivity.updateDial();
+                AirdectorActivity.updateBackground();
             }
         });
     }
@@ -98,6 +99,17 @@ public class AirdectorService extends Service {
         }
 
         return START_STICKY;
+    }
+
+    @Override
+    public void onDestroy() {
+        clearSharedPrefs();
+        super.onDestroy();
+    }
+
+    private void clearSharedPrefs() {
+        SharedPrefs sharedPrefs = AppRuntime.getSharedPrefs();
+        sharedPrefs.clearAll();
     }
 
     private void writeToSharedPrefs() {
